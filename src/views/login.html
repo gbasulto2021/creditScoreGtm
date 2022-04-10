@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Usuario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  
+</head>
+<body>
+      <header class="header">
+        <h1 class="header__title">CREDIT SCORING</h1>
+      </header>
+      <div class="login-container">
+          
+          <form class="login" action="/auth" method="POST">
+            <div class="login__email">
+              <span class="material-icons">mail</span>
+              <label class="lb_email" for="email">USER*</label>
+              <input type="email" name="email" class="email" id="email" placeholder="  Ingrese su email" />
+             
+            </div>
+            <div class="login__pass">
+              <span class="material-icons">lock</span>
+              <label class="lb_pass" for="pass">PASS*</label>
+              <input type="password" name="pass" class="pass" id="pass" placeholder="  Ingrese su password" />
+            </div>
+            <p class="input-error"></p>
+            <input class="btn_login" type="submit" value="ENTRAR" />
+          </form>
+      </div>
+      <%- include ('./partials/footer.html') %>
+
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <% if(typeof alert != "undefined"){%>
+        <script>
+          
+          Swal.fire({
+              title:'<%=alertTitle%>',
+              text:'<%=alertMessage%>',
+              icon:'<%=alertIcon%>',
+              showConfirmButton: <%=showConfirmButton%>,
+              timer: <%=timer%>,
+          }).then(()=>{
+              window.location ='http://localhost:5500<%=ruta%>'
+             
+          })
+        </script>
+        <% } %>
+   <!-- <script src="js/main.js"></script> -->
+</body>
+</html>

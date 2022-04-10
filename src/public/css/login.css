@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color:#32502E;
+    --secondary-color: #406343;
+    --third-color:#ECE7B4;
+    --four-color: #F3EFCC;
+    --text-color: #0A142F;
+}
+
+.btn-login{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+body{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../img/desktop1.svg);
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+   
+    
+ 
+}
+
+.header{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.header__title{
+    text-align: center;
+    font-size: 4rem;
+    color: var(--four-color);
+    font-weight:700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   
+    
+}
+
+.login-container{
+    position: relative;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-container .img-1{
+    position: absolute;
+    left: 0;
+    top: 100px;
+    width: 40vw;
+    opacity: .5;
+}
+
+
+.material-icons{
+   
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+      color: var(--four-color);
+}
+
+.login{
+width: 350px;
+height: 300px;
+text-align: center;
+padding: 10px;
+display: flex;
+flex-direction: column;
+margin-bottom: 30px;
+}
+
+.login__email, .login__pass{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.email, .pass{
+    width: 250px;
+    height: 48px;
+    background-color: var(--four-color);
+    
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+    
+}
+.login label{
+    position: absolute;
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    background-color: var(--four-color);
+    border-radius: 10px;
+    top:-10px;
+    left:80px;
+    font-size: .7rem;
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+
+}
+
+.btn_login{
+    display: inline-block;
+    align-self: flex-end;
+    margin-right: 20px;
+    width:130px;
+    height: 40px;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: var(--four-color);
+    font-weight: bold;
+    font-size: 1rem;
+   
+}
+
+.input-error{
+    
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-right: 25px;
+    text-align: right;
+    color: rgb(247, 177, 177);
+    visibility: hidden;
+}
+
+.input-error-activo{
+    visibility: visible;
+}
+

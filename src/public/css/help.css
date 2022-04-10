@@ -1,0 +1,26 @@
+.form__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    padding: 5px;
+    border-radius: 5px 0;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--third-color);
+    font-size: 12px;
+    
+}
+.help-container{
+    width: 80%;
+    height: 400px;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--secondary-color);
+}
+
+.help-container p{
+    color: var(--four-color);
+}

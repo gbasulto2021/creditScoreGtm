@@ -1,0 +1,35 @@
+<%- include ('./partials/head.html') %>
+<body>
+    <%- include ('./partials/navigation.html') %>
+    <div class="reports__title">
+        <h5 class="material-icons">
+            list_alt
+            </h5>
+        <h3>Reportes</h3>
+    </div>
+    <main class="reports__container">
+        <section class="reports__search">
+            <input type="search" placeholder="  Encuentra clientes" name="search" id="search" class="search">
+            <button class="btn-search"><h5 class="material-icons">
+                search
+                </h5>
+            </button>
+        </section>
+        <section class="reports__items">
+           <% if (clients) { %>
+                  <% clients.forEach(client=> { %>
+                      <%- include('./partials/client-card.html', {client}) %>
+                  <% }) %>
+          <%} else {%>
+            <h3>No hay Datos que mostrar</h3>
+          <%}%>
+
+        </section>
+    </main>
+    
+    <%- include ('./partials/footer.html') %>
+    <script src="/js/navigation.js"></script>
+
+  
+</body>
+</html>

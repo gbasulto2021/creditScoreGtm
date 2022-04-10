@@ -1,0 +1,29 @@
+<%- include ('./partials/head.html') %>
+<body>
+    <%- include ('./partials/navigation.html') %>
+
+    <section class="dashboard-container">
+      <article class="dashboard__user">
+      <% if(login){%>
+          <h2> Operador conectado : <%=name%></h2>
+         
+      <%} else {%>
+          <h2><strong><%= name%></strong></h2>
+          
+      <%}%>
+      </article>
+      <article class="dashboard__info">
+        
+      </article>
+          
+    </section>
+    
+
+    <%- include ('./partials/footer.html') %>
+  
+
+    <script src="js/navigation.js"></script>
+    
+</body>
+
+</html>

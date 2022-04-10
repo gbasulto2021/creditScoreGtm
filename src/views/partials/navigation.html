@@ -1,0 +1,31 @@
+<header class="header">
+  <div class="header__title">
+    <h1><a href="/">CREDIT SCORING</a></h1>
+    </div>
+  <nav class="header__nav">
+    <a href="/add" title="Nuevo Cliente"><span class="material-icons">person_outline</span>Nuevo Reporte</a>
+    <a href="/clients" title="Reportes"><span class="material-icons">list_alt</span>Reportes</a>
+    <a href="/help" title="Ayuda"><span class="material-icons">help_outline</span>Ayuda</a>
+    <% if(rol === "admin"){%>
+      <a href="/register" title="Nuevo operador"><span class="material-icons">
+        add_circle_outline
+        </span>Nuevo Operador</a>
+    <%}%>
+    <% if(login){%>
+      <a href="/logout" class="logout" title="Cerrar sesion"><span class="material-icons">
+        logout
+        </span>Cerrar</a>
+    <%} else {%>
+       <a href="login" class="a-login" title="iniciar sesion"><span class="material-icons">
+        login
+        </span>Entrar</a>
+    <%}%>
+ 
+  
+    
+  </nav>
+  <div class="header__menu-btn">
+    <a href="#"><span class="material-icons">menu</span></a>
+  </div>
+</header>
+

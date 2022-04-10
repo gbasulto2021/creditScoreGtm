@@ -1,0 +1,184 @@
+<%- include ('./partials/head.html') %>
+<body>
+  <%- include ('./partials/navigation.html') %>
+
+    <div class="form__title">
+        <span class="material-icons">
+            person_outline
+            </span>
+        <h3>Nuevo Reporte</h3>
+        
+    </div>
+    <div class="form-container">
+        <form action="/add" method="POST" class="form" id="form">
+            <div class="form__item">
+                  <label for="nombre">Nombre</label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    
+                  />
+            <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                <label for="apellidos">Apellido</label>
+                <input
+                  type="text"
+                  name="apellidos"
+                  id="apellido"
+                  
+                />
+          <p class="form__input-error">* Campo inv&aacutelido</p>
+            </div>
+            <div class="form__item">
+                <label for="ci">Carn&eacutet de Identidad</label>
+                <input
+                    type="text"
+                    name="ci"
+                    id="ci"
+                  />
+                
+                <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                <label>Ubicaci&oacuten Laboral</label>
+                <div class="ul">
+                  <input type="radio" name="ul" id="ul-centro" value="centro" />
+                  <label for="ul-centro"><small>Centro</small></label>
+                  <input type="radio" name="ul" id="ul-cont" value="contornos" />
+                  <label for="ul-cont"><small>Contornos</small></label>
+                </div>
+                <p class="form__input-error">
+                  * Debe seleccionar una ubicaci&oacuten laboral
+                </p>
+              </div>
+              <div class="form__item">
+                <label for="experiencia">Años de Experiencia</label>
+                 <input
+                    type="number"
+                    step="any"
+                    name="experiencia"
+                    id="experiencia"
+                    min="0"
+                    max="70"
+                    
+                  />
+                
+                <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                
+                <label for="capago">Capacidad de Pago</label>
+                  <input
+                    type="number"
+                    name="capago" 
+                    id="capago"
+                    step="any"
+                    min="0"
+                  />
+               
+                <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                <label for="resfamiliar">Responsabilidad Familiar</label>
+                <input
+                    type="number"
+                    name="resfamiliar" 
+                    id="resfamiliar"
+                    step="any"
+                    min="0"
+                  />
+        
+                <p class="form__input-error">
+                  * Campo inv&aacutelido
+                </p>
+              </div>
+              <div class="form__item">
+                <label for="otrosIngresos">Otros Ingresos</label>
+                <input
+                    type="number"
+                    name="otrosIngresos"
+                    id="otrosIngresos"
+                    step="any"
+                    min="0"
+                  />
+                <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                <label>Escolaridad</label>
+                <div class="escolaridad">
+                  <input
+                    type="radio"
+                    name="escolaridad"
+                    id="nivel-superior"
+                    value="superior"
+                  />
+        
+                  <label for="nivel-superior"><small>Nivel Superior</small></label>
+                  <br />
+                  <input
+                    type="radio"
+                    name="escolaridad"
+                    id="no-nivel-superior"
+                    value="no-nivel-superior"
+                  />
+                  <label for="no-nivel-superior"><small>No Nivel Superior</small></label>
+                </div>
+                <p class="form__input-error">
+                  * Debe seleccionar nivel de escolaridad
+                </p>
+              </div>
+              <div class="form__item">
+                <label>Tasa</label>
+                
+                  <input
+                    type="number"
+                    name="tasa"
+                    id="tasa"
+                    step="any"
+                    min="4.25"
+                    max="35"
+                  />
+               
+                <p class="form__input-error">* Campo inv&aacutelido</p>
+              </div>
+              <div class="form__item">
+                <label>Garant&iacutea</label>
+                <div class="garantia">
+                  <input type="radio" name="garantia" id="garantia-real" value="garantia-real" />
+                  <label for="garantia-real"><small>Garant&iacutea Real</small></label>
+                  <br />
+                  <input type="radio" name="garantia" id="respaldo-colateral" value="respaldo-colateral" />
+                  <label for="respaldo-colateral"><small>Respaldo Colateral</small></label>
+                </div>
+                <p class="form__input-error">
+                  * Debe seleccionar una garant&iacutea
+                </p>
+              </div>
+              <input type="submit" class="btn-send" value="Enviar"></input>
+        </form>
+        
+    </div>
+    <%- include ('./partials/footer.html') %>
+
+    <script src="js/navigation.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script> -->
+    <% if(typeof alert != "undefined"){%>
+    <script>
+      
+      Swal.fire({
+          title:'<%=alertTitle%>',
+          text:'<%=alertMessage%>',
+          icon:'<%=alertIcon%>',
+          showConfirmButton: <%=showConfirmButton%>,
+          timer: <%=timer%>,
+      }).then(()=>{
+          window.location = '/<%=ruta%>'
+      })
+    </script>
+    <% } %>
+</body>
+
+

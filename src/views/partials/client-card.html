@@ -1,0 +1,39 @@
+<article class="reports__item">
+   <h5><%= client.nombre %> <%= client.apellidos %></h5>
+    <h5><%= client.ci %></h5>
+    <h5><%= client.total %></h5>
+    <div class="reports__btn">
+      <a href="/client/<%=client.id%>" class="btn-view" title="Ver"><span class="material-icons">
+        preview
+      </a>
+      <a href="/update/<%=client.id%>" class="btn-edit" title="Editar"><span data-id = "<%= client.id%>" class="material-icons">
+        edit
+        </span></a>
+      <!-- <a href="/delete/<%=client.id%>" class="btn-delete" title="Eliminar"><span class="material-icons">
+        delete
+        </span></a> -->
+        <a onclick="confirmar(<%=client.id%>)" class="btn-delete" title="Eliminar"><span class="material-icons">
+        delete
+        </span></a>
+    </div>
+    
+  </article>
+
+  <script>
+     function confirmar (id){
+         Swal.fire({
+            title: 'Confirma eliminar reporte?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#025D02',
+            cancelButtonColor: '#B05848',
+            confirmButtonText: 'Confirmar!'
+        }).then((result) => {
+             if (result.isConfirmed) {
+            
+            window.location = `/delete/${id}`   
+        }
+})
+     }
+       
+    </script>

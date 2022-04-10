@@ -1,0 +1,99 @@
+
+.btn-register{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.register-container{
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+}
+
+.register-container h2{
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: var(--third-color);
+}
+
+.register__form{
+    position: relative;
+    width: 350px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.register__item{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  
+}
+
+.register__item input, .register__item select{
+    height: 30px;
+    background-color: var(--four-color);
+    border: none;
+    border-radius:5px;
+    font-size: 12px;
+    font-weight: bold;
+    outline: none;
+    
+}
+
+.btn-register{
+    position: absolute;
+    bottom: -15px;
+    width: 100px;
+    height: 35px;
+    align-self: center;
+    color:var(--four-color);
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgb(65, 64, 64);
+    margin-top: 5px;
+    transition: all 0.5s ease;
+   
+    
+}
+
+.btn-register:hover{
+    background-color:var(--four-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    
+}
+
+ .form__input-error{
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color:#f8a28bb9;
+    visibility: hidden;
+    
+ }
+
+.form__input-error-activo{
+    visibility: visible;
+} 
+
+
+
+

@@ -1,0 +1,164 @@
+.form__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    padding: 5px;
+    border-radius: 5px 0;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--third-color);
+    font-size: 12px;
+    
+}
+
+.form-container{
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto 80px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+}
+
+.form{
+    position: relative;
+    width: 350px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.form__item{
+    width: 90%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  
+}
+.form__item label{
+    color: var(--four-color);
+}
+
+.form__item label, .form__item p, .form__item input{
+    margin-left: 10px;
+}
+
+.form__item input[type="text"],.form__item input[type="number"], .form__item >div{
+    width: 270px;
+    
+}
+.form__item input[type="text"], .form__item input[type="number"]{
+    height: 30px;
+    padding-left: 10px;
+    background-color: var(--four-color);
+    border: none;
+    border-radius:5px;
+    font-size: 12px;
+    font-weight: bold;
+    outline: none;
+    
+}
+.form__item .escolaridad, .form__item .garantia{
+    display: flex;
+}
+
+.btn-send{
+    position: absolute;
+    bottom: -15px;
+    width: 100px;
+    height: 35px;
+    align-self: center;
+    color:var(--four-color);
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgb(65, 64, 64);
+    margin-top: 5px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+   
+    
+}
+
+.btn-send:hover{
+    background-color:var(--four-color);
+    color: var(--primary-color);
+    
+    
+}
+
+ .form__input-error{
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color:#f8a28bb9;
+    visibility: hidden;
+    
+ }
+
+.form__input-error-activo{
+    visibility: visible;
+} 
+
+/* .campo-correcto{
+   border: 2px solid rgb(56, 134, 73);
+} */
+
+/* .campo-incorrecto{
+    border: 2px solid rgb(241, 11, 11);
+    
+} */
+
+/* .campo-incorrecto legend{
+    color:rgb(241, 11, 11);
+}
+
+.result {
+    font-weight: 700;
+}
+
+
+.probabilidad-impago > p, tr{
+    font-family: sans-serif;
+}
+
+.menu{
+    display: block;
+}  */
+
+
+@media  screen and (min-width:768px) {
+    .form{
+        width: 600px;
+    }
+
+    .form__item{
+       flex-direction: row;
+       align-items: center;
+       justify-content: space-between;
+       position: relative;
+    }
+
+    .form__item > label{
+        width: 180px;
+    }
+
+    .form__item .form__input-error{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    
+}
