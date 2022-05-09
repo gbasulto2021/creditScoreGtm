@@ -67,8 +67,12 @@
     outline: none;
     
 }
-.form__item .escolaridad, .form__item .garantia{
+.form__item .escol, .form__item .garant{
     display: flex;
+}
+
+.form__item input[type="radio"], .form__item input[type="radio"]~ label{
+cursor: pointer;
 }
 
 .btn-send{
@@ -107,7 +111,7 @@
     
  }
 
-.form__input-error-activo{
+ .form__input-error.activo{
     visibility: visible;
 } 
 

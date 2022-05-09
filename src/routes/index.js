@@ -6,6 +6,7 @@ const calc = require("../middlewares/calc.js");
 const clientsController = require("../controllers/clientsControllers.js");
 const opAuth = require("../middlewares/opAuth.js");
 const adminAuth = require("../middlewares/adminAuth.js");
+const formClientValidator = require("../middlewares/form-client-validator.js");
 
 
 routes.get("/login", (req, res) => {
@@ -128,7 +129,8 @@ routes.get("/", (req, res) => {
   }
 });
 
-routes.get("/add",opAuth, (req, res) => {
+routes.get("/add", opAuth, (req, res) => {
+  
   res.render("form-client.html", {
     login: true,
     name: req.session.name,
@@ -136,13 +138,14 @@ routes.get("/add",opAuth, (req, res) => {
   });
 });
 
-routes.post("/add", opAuth,calc, clientsController.addClient);
+routes.post("/add", opAuth,formClientValidator,calc, clientsController.addClient);
+
 
 routes.get("/clients",opAuth, clientsController.getClients);
 
 routes.get("/update/:id",opAuth, clientsController.getOneClient);
 
-routes.post("/update/:id", opAuth, calc, clientsController.updateClient);
+routes.post("/update/:id", opAuth, formClientValidator,calc, clientsController.updateClient);
 
 routes.get("/delete/:id", opAuth,clientsController.deleteClient);
 

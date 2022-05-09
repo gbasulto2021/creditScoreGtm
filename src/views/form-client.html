@@ -11,49 +11,50 @@
     </div>
     <div class="form-container">
         <form action="/add" method="POST" class="form" id="form">
-            <div class="form__item">
+            <div class="form__item nombre">
                   <label for="nombre">Nombre</label>
                   <input
                     type="text"
                     name="nombre"
                     id="nombre"
+                    required
                     
                   />
-            <p class="form__input-error">* Campo inv&aacutelido</p>
+             <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
-                <label for="apellidos">Apellido</label>
+              <div class="form__item apellidos">
+                <label for="apellidos">Apellidos</label>
                 <input
                   type="text"
                   name="apellidos"
-                  id="apellido"
+                  id="apellidos"
+                  required
                   
                 />
-          <p class="form__input-error">* Campo inv&aacutelido</p>
+          <p class="form__input-error"></p>
             </div>
-            <div class="form__item">
+            <div class="form__item ci">
                 <label for="ci">Carn&eacutet de Identidad</label>
                 <input
                     type="text"
                     name="ci"
                     id="ci"
+                    required
                   />
                 
-                <p class="form__input-error">* Campo inv&aacutelido</p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item ul">
                 <label>Ubicaci&oacuten Laboral</label>
-                <div class="ul">
+                <div class="ulab">
                   <input type="radio" name="ul" id="ul-centro" value="centro" />
                   <label for="ul-centro"><small>Centro</small></label>
                   <input type="radio" name="ul" id="ul-cont" value="contornos" />
                   <label for="ul-cont"><small>Contornos</small></label>
                 </div>
-                <p class="form__input-error">
-                  * Debe seleccionar una ubicaci&oacuten laboral
-                </p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item experiencia">
                 <label for="experiencia">Años de Experiencia</label>
                  <input
                     type="number"
@@ -62,12 +63,13 @@
                     id="experiencia"
                     min="0"
                     max="70"
+                    required
                     
                   />
                 
-                <p class="form__input-error">* Campo inv&aacutelido</p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item capago">
                 
                 <label for="capago">Capacidad de Pago</label>
                   <input
@@ -76,25 +78,27 @@
                     id="capago"
                     step="any"
                     min="0"
+                    required
                   />
                
-                <p class="form__input-error">* Campo inv&aacutelido</p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item resFamiliar">
                 <label for="resfamiliar">Responsabilidad Familiar</label>
                 <input
                     type="number"
                     name="resfamiliar" 
-                    id="resfamiliar"
+                    id="resFamiliar"
                     step="any"
                     min="0"
+                    required
                   />
         
                 <p class="form__input-error">
-                  * Campo inv&aacutelido
+                  
                 </p>
               </div>
-              <div class="form__item">
+              <div class="form__item otrosIngresos">
                 <label for="otrosIngresos">Otros Ingresos</label>
                 <input
                     type="number"
@@ -102,12 +106,13 @@
                     id="otrosIngresos"
                     step="any"
                     min="0"
+                    required
                   />
-                <p class="form__input-error">* Campo inv&aacutelido</p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item escolaridad">
                 <label>Escolaridad</label>
-                <div class="escolaridad">
+                <div class="escol">
                   <input
                     type="radio"
                     name="escolaridad"
@@ -126,10 +131,10 @@
                   <label for="no-nivel-superior"><small>No Nivel Superior</small></label>
                 </div>
                 <p class="form__input-error">
-                  * Debe seleccionar nivel de escolaridad
+                  
                 </p>
               </div>
-              <div class="form__item">
+              <div class="form__item tasa">
                 <label>Tasa</label>
                 
                   <input
@@ -139,13 +144,14 @@
                     step="any"
                     min="4.25"
                     max="35"
+                    required
                   />
                
-                <p class="form__input-error">* Campo inv&aacutelido</p>
+                <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item garantia">
                 <label>Garant&iacutea</label>
-                <div class="garantia">
+                <div class="garant">
                   <input type="radio" name="garantia" id="garantia-real" value="garantia-real" />
                   <label for="garantia-real"><small>Garant&iacutea Real</small></label>
                   <br />
@@ -153,9 +159,10 @@
                   <label for="respaldo-colateral"><small>Respaldo Colateral</small></label>
                 </div>
                 <p class="form__input-error">
-                  * Debe seleccionar una garant&iacutea
+                  
                 </p>
               </div>
+              <input type="hidden" id="isValid" name="isValid" value="">
               <input type="submit" class="btn-send" value="Enviar"></input>
         </form>
         
@@ -163,8 +170,8 @@
     <%- include ('./partials/footer.html') %>
 
     <script src="js/navigation.js"></script>
-    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script> -->
+    <script src="js/form-client.js"></script>
+   
     <% if(typeof alert != "undefined"){%>
     <script>
       

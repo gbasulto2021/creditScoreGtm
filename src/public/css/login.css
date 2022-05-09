@@ -142,6 +142,7 @@ margin-bottom: 30px;
 }
 
 .btn_login{
+    cursor: pointer;
     display: inline-block;
     align-self: flex-end;
     margin-right: 20px;
@@ -155,6 +156,10 @@ margin-bottom: 30px;
     font-weight: bold;
     font-size: 1rem;
    
+}
+
+.btn_login:hover{
+    color: var(--third-color);
 }
 
 .input-error{

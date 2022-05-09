@@ -1,327 +1,163 @@
+  const $form = document.getElementById("form"),
+        $nombre = document.getElementById("nombre"),
+        $apellidos = document.getElementById("apellidos"),
+        $ci = document.getElementById("ci"),
+        $ul = document.querySelectorAll('#form input[name="ul"]'),
+        $experiencia = document.getElementById("experiencia"),
+        $caPago = document.getElementById("capago"),
+        $resFamiliar = document.getElementById("resFamiliar"),
+        $otrosIng = document.getElementById("otrosIngresos"),
+        $escolaridad = document.querySelectorAll('#form input[name="escolaridad"]'),
+        $tasa = document.getElementById("tasa"),
+        $garantia = document.querySelectorAll('#form input[name="garantia"]'),
+        $isValid = document.getElementById("isValid");
 
 
-const userCredentials = {
-  email: "gbasulto2015@gmail.com",
-  pass: "12345"
-}
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    apellidos: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    ci: /^\d{11}$/, // 11 numeros exactos.
+    experiencia: /^\d{0,70}$/, // numero del 0 a 70
+    capago: /^\d{0,100}$/, // 0 a 100 numeros.
+    resFamiliar: /^\d{0,20}$/, // 0 a 20 numeros.
+    otrosIngresos: /^\d{0,1000000}$/, // 0 a 1m numeros.
+    tasa: /^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$/ // decimales
+    
+  };
 
-const d = document,
-  $formLogin = d.querySelector(".login"),
-  $user = d.querySelector(".email"),
-  $pass = d.querySelector(".pass"),
+  const textErrors = {
+    nombre: "Solo se permite letras y espacios en blanco",
+    apellidos: "Solo se permite letras y espacios en blancooooooo",
+    ci: "CI debe ser solo numeros y de 11 digitos",
+    experiencia: "Solo numeros del 0 al 70",
+    capago: "Solo numeros del 1 al 100",
+    resFamiliar: "Solo numeros del 1 al 20",
+    otrosIngresos: "Solo numeros",
+    tasa: "Solo numeros",
+    ul: "Debe seleccionar una ubicacion laboral",
+    escolaridad: "Debe seleccionar nivel de escolaridad",
+    garantia: "Debe seleccionar una garantia"
+  }
+  let fields = {
+    nombre: false,
+    apellidos: false,
+    ci: false,
+    ul: false,
+    experiencia: false,
+    capago: false,
+    resFamiliar: false,
+    otrosIngresos: false,
+    escolaridad: false,
+    tasa: false,
+    garantia: false,
+    
+  };
 
+  const validateFormAdd = (e)=>{
 
-
-  $formulario = d.getElementById("formulario"),
-  $nombre = d.querySelector(".nombre input"),
-  $apellidos = d.querySelector(".apellidos input"),
-  $ci = d.querySelector(".ci input"),
-  $inputsText = d.querySelectorAll("#formulario input[type ='text']"),
-  $inputsNumbers = d.querySelectorAll("#formulario input[type ='number']"),
-  $inputsUl = d.querySelectorAll('#formulario input[name="UL"]'),
-  $inputsCargaF = d.querySelectorAll('#formulario input[name="cargaF"]'),
-  $inputsEscolaridad = d.querySelectorAll(
-    '#formulario input[name="escolaridad"]'
-  ),
-  $inputsGarantia = d.querySelectorAll('#formulario input[name="garantia"]'),
-  $experiencia = d.querySelector("#experiencia"),
-  $caPago = d.querySelector("#capacpag"),
-  $otrosIng = d.querySelector("#otrosIng"),
-  $b = -1.042,
-  $c = 0.548,
-  $e = -0.297,
-  $g = -0.237,
-  $i = 0.718,
-  $k = -0.002,
-  $m = 0.508,
-  $o = -0.689,
-  $q = 0.803,
-  $tasa = d.querySelector("#tasa");
-
-  const loginValidation = ()=>{
-    if($user.value !== userCredentials.email && $user.value !== userCredentials.pass ){
-         d.querySelector(".login > p").textContent = "* Usuario o Contraseña incorrectos";
-         d.querySelector(".login > p").classList.add("input-error-activo");
-        }else{
-          d.querySelector(".login > p").classList.remove("input-error-activo")
-        
-     
+    switch (e.target.name) {
+      case "nombre":
+         validateInput(expresiones.nombre, e.target.value, "nombre")
+      break;
+      case "apellidos":
+         validateInput(expresiones.apellidos, e.target.value, "apellidos")
+      break;
+      case "ci":
+         validateInput(expresiones.ci, e.target.value, "ci")
+      break;
+      case "experiencia":
+         validateInput(expresiones.experiencia, e.target.value, "experiencia")
+      break;
+      case "capago":
+         validateInput(expresiones.capago, e.target.value, "capago")
+      break;
+      case "resfamiliar":
+         validateInput(expresiones.resFamiliar, e.target.value, "resFamiliar")
+      break;
+      case "otrosIngresos":
+         validateInput(expresiones.otrosIngresos, e.target.value, "otrosIngresos")
+      break;
+      case "tasa":
+         validateInput(expresiones.tasa, e.target.value, "tasa")
+      break;
+ 
+      
     }
   }
-  
 
-  $formLogin.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    loginValidation();
-    $formLogin.reset();
-   
+  const validateInput = (exp,inputValue,fieldName)=>{
+   let regex = new RegExp(exp);
+   if(!regex.exec(inputValue) || inputValue == ""){
+     fields[fieldName] =false;
+     document.querySelector(`.${fieldName} .form__input-error`).textContent=textErrors[fieldName]
+     document.querySelector(`.${fieldName} .form__input-error`).classList.add("activo")
+   }else{
+    fields[fieldName] =true;
+     document.querySelector(`.${fieldName} .form__input-error`).textContent=""
+     document.querySelector(`.${fieldName} .form__input-error`).classList.remove("activo") 
+   }
+  }
+
+
+
+  const validateInputRadio = ()=>{
+
+    if ($ul[0].checked || $ul[1].checked) {
+      fields.ul= true;
+      document.querySelector(`.ul .form__input-error`).textContent=""
+      document.querySelector(`.ul .form__input-error`).classList.remove("activo") 
+        } else {
+          fields.ul= false;
+          document.querySelector(`.ul .form__input-error`).textContent=textErrors.ul
+          document.querySelector(`.ul .form__input-error`).classList.add("activo")
+        
+        }
+    if ($escolaridad[0].checked || $escolaridad[1].checked) {
+      fields.escolaridad= true;
+      document.querySelector(`.escolaridad .form__input-error`).textContent=""
+      document.querySelector(`.escolaridad .form__input-error`).classList.remove("activo") 
+        } else {
+          fields.escolaridad= false;
+          document.querySelector(`.escolaridad .form__input-error`).textContent=textErrors.escolaridad
+          document.querySelector(`.escolaridad .form__input-error`).classList.add("activo")
+        
+        }
+    if ($garantia[0].checked || $garantia[1].checked) {
+      fields.garantia= true;
+      document.querySelector(`.garantia .form__input-error`).textContent=""
+      document.querySelector(`.garantia .form__input-error`).classList.remove("activo") 
+        } else {
+          fields.garantia= false;
+          document.querySelector(`.garantia .form__input-error`).textContent=textErrors.garantia
+          document.querySelector(`.garantia .form__input-error`).classList.add("activo")
+        
+        }
+
+  }
+
+  document.addEventListener("keyup", (e)=>{
+    if(e.target.matches('input[type="text"]') || e.target.matches('input[type="number"]')){
+       validateFormAdd(e)
+    } 
+
+  });
+
+  document.addEventListener("click", (e)=>{
+    if (e.target.matches("input[type='radio']")) {
+      validateInputRadio()
+    }
   })
 
-
-
-
-var initialCamposvalues = {
-  nombre: false,
-  apellidos: false,
-  ci: false,
-  ubicacion: false,
-  experiencia: false,
-  caPago: false,
-  resFamiliar: false,
-  otrosIngresos: false,
-  escolaridad: false,
-  tasa: false,
-  garantia: false,
-};
-
-let campos = initialCamposvalues;
-let dataToDb = {
-nombre:"",
-apellidos:"",
-ci:"",
-ul:"",
-experiencia:"",
-capago:"",
-resfamiliar:"",
-otrosIngresos:"",
-escolaridad:"",
-tasa:"",
-garantia:"",
-total:""};
-
-let ubicacion, cargaF, escolaridad, garantia;
-
-for (let i = 0; i < $inputsUl.length; i++) {
-  $inputsUl[i].addEventListener("change", () => {
-    d.querySelector(".ubicacion").classList.add("campo-correcto");
-    d.querySelector(".ubicacion").classList.remove("campo-incorrecto");
-    d.querySelector(".ubicacion .formulario__input-error").classList.remove(
-      "formulario__input-error-activo"
-    );
-    ubicacion = $inputsUl[i].value;
-    dataToDb.ul = $inputsUl[i].id   
-    
- 
-  });
-}
-for (let i = 0; i < $inputsCargaF.length; i++) {
-  $inputsCargaF[i].addEventListener("change", () => {
-    d.querySelector(".resFamiliar").classList.add("campo-correcto");
-    d.querySelector(".resFamiliar").classList.remove("campo-incorrecto");
-    d.querySelector(".resFamiliar .formulario__input-error").classList.remove(
-      "formulario__input-error-activo"
-    );
-    cargaF = $inputsCargaF[i].value;
-   
-    dataToDb.resfamiliar = $inputsCargaF[i].id   
-    
-   
-  });
-}
-for (let i = 0; i < $inputsEscolaridad.length; i++) {
-  $inputsEscolaridad[i].addEventListener("change", () => {
-    d.querySelector(".escolaridad").classList.add("campo-correcto");
-    d.querySelector(".escolaridad").classList.remove("campo-incorrecto");
-    d.querySelector(".escolaridad .formulario__input-error").classList.remove(
-      "formulario__input-error-activo"
-    );
-    escolaridad = $inputsEscolaridad[i].value
-    dataToDb.escolaridad = $inputsEscolaridad[i].id   
-    
-    
-  });
-}
-for (let i = 0; i < $inputsGarantia.length; i++) {
-  $inputsGarantia[i].addEventListener("change", () => {
-    d.querySelector(".garantia").classList.add("campo-correcto");
-    d.querySelector(".garantia").classList.remove("campo-incorrecto");
-    d.querySelector(".garantia .formulario__input-error").classList.remove(
-      "formulario__input-error-activo"
-    );
-    garantia = $inputsGarantia[i].value;
-    dataToDb.garantia = $inputsGarantia[i].id
-    
-  });
-}
-
-$inputsNumbers.forEach((input)=>{
-input.addEventListener("keyup", ()=>{
-  input.parentElement.nextElementSibling.classList.remove(
-    "formulario__input-error-activo"
-  );
-})
-})
-
-$inputsText.forEach((input)=>{
-  input.addEventListener("keyup", ()=>{
-    input.parentElement.nextElementSibling.classList.remove(
-      "formulario__input-error-activo"
-    );
-  })
+  $form.addEventListener("submit", (e)=>{
+    //  e.preventDefault();
+     validateInputRadio()
+    if (fields.nombre &&  fields.apellidos && fields.ci && fields.ul && fields.experiencia && fields.capago && fields.resFamiliar && fields.otrosIngresos && fields.escolaridad && fields.tasa && fields.garantia) {
+      $isValid.value = "Valid"
+    }else{
+      $isValid.value = ""
+    }
+       
   })
 
-
-
-const validarCampoRadio = () => {
-  if ($inputsUl[0].checked || $inputsUl[1].checked) {
-    campos.ubicacion = true;
-  } else {
-    // d.querySelector(".ubicacion").classList.add("campo-incorrecto");
-    d.querySelector(".ubicacion .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($inputsCargaF[0].checked || $inputsCargaF[1].checked) {
-    campos.resFamiliar = true;
-  } else {
-    // d.querySelector(".resFamiliar").classList.add("campo-incorrecto");
-    d.querySelector(".resFamiliar .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($inputsEscolaridad[0].checked || $inputsEscolaridad[1].checked) {
-    campos.escolaridad = true;
-  } else {
-    // d.querySelector(".escolaridad").classList.add("campo-incorrecto");
-    d.querySelector(".escolaridad .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($inputsGarantia[0].checked || $inputsGarantia[1].checked) {
-    campos.garantia = true;
-  } else {
-    // d.querySelector(".garantia").classList.add("campo-incorrecto");
-    d.querySelector(".garantia .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-};
-
-const validarCampoNumbers = () => {
-  if ($experiencia.value !== "" && $experiencia.value !== null) {
-    campos.experiencia = true;
-  } else {
-    // d.querySelector(".experiencia").classList.add("campo-incorrecto");
-    d.querySelector(".experiencia .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($caPago.value !== "" && $caPago.value !== null) {
-    campos.caPago = true;
-  } else {
-    // d.querySelector(".capago").classList.add("campo-incorrecto");
-    d.querySelector(".capago .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($otrosIng.value !== "" && $otrosIng.value !== null) {
-    campos.otrosIngresos = true;
-  } else {
-    // d.querySelector(".otrosingresos").classList.add("campo-incorrecto");
-    d.querySelector(".otrosingresos .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-  if ($tasa.value !== "" && $tasa.value !== null) {
-    campos.tasa = true;
-  } else {
-    // d.querySelector(".tasa").classList.add("campo-incorrecto");
-    d.querySelector(".tasa .formulario__input-error").classList.add(
-      "formulario__input-error-activo"
-    );
-  }
-};
-
-const validarCampoText = ()=>{
-
-  $inputsText.forEach((input)=>{
-    if (input.value !== undefined && input.value !== "" && input.value !== null) {
-         
-         campos[input.name] = true;
-      } else {
-        d.querySelector(`.${input.name} .formulario__input-error`).classList.add(
-          "formulario__input-error-activo"
-        );
-       }
-  })
-  
-}
-
-
-
-// $formulario.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   validarCampoRadio();
-//   validarCampoNumbers();
-//   validarCampoText();
-
-//   if (
-//     campos.nombre &&
-//     campos.apellidos &&
-//     campos.ci &&
-//     campos.ubicacion &&
-//     campos.resFamiliar &&
-//     campos.escolaridad &&
-//     campos.garantia &&
-//     campos.experiencia &&
-//     campos.caPago &&
-//     campos.otrosIngresos &&
-//     campos.tasa
-//   ) {
-
-//     let result =
-//       $b +
-//       $c * ubicacion -
-//       $e * $experiencia.value -
-//       $g * $caPago.value +
-//       $i * cargaF -
-//       $k * $otrosIng.value +
-//       $m * escolaridad -
-//       $o * $tasa.value +
-//       $q * garantia;
-//     let total = 1 / Math.pow(result, 10) + 1;
-
-//     dataToDb.nombre = $nombre.value;
-//     dataToDb.apellidos = $apellidos.value;
-//     dataToDb.ci = $ci.value;
-//     dataToDb.experiencia = $experiencia.value;
-//     dataToDb.capago = $caPago.value;
-//     dataToDb.otrosIngresos = $otrosIng.value;
-//     dataToDb.tasa = $tasa.value;
-//     dataToDb.total = total;
-     
-//     for(let key in dataToDb){
-      
-//      d.querySelector(`.resultado__${key}`).nextElementSibling.textContent = dataToDb[key];
-//     }
-    
-//     console.log(dataToDb);
-
-//     campos = initialCamposvalues;
-//     d.querySelector(".probabilidad-impago > p").textContent = "";
-//     $formulario.reset();
-    
-//   } else {
-   
-//     d.querySelector(".probabilidad-impago > p").textContent = "Sin resultados";
-//     return false;
-//   }
-// });
-
-
-// let option = {
-//   nombre:"George",
-// apellidos:"Basulto",
-// ci:"81031224907",
-// ul:"Ul-Contornos",
-// experiencia:"5",
-// capago:"5",
-// resfamiliar:"0-2",
-// otrosIngresos:"1500",
-// escolaridad:"nivel-superior",
-// tasa:"7",
-// garantia:"garantia-reales",
-// total:""
-// }
 
 
