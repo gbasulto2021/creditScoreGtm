@@ -59,10 +59,30 @@
     transition: all 0.5 ease;
 }
 
-.header__nav a:hover{
-    color:var(--third-color);
-  
+.header a{
+    position: relative;
 }
+
+.header a:hover{
+    color:var(--third-color);
+    
+}
+
+.header__nav a:before{
+    content: " ";
+    width:0%;
+    background-color: var(--four-color);
+    height: 3px;
+    position: absolute;
+    bottom: 30px;
+    transition: all 0.3s ease;
+    }
+
+  
+.header__nav a:hover:before{
+    width: 90%;
+}
+
 
 @media  screen and (min-width:860px) {
     .header__menu-btn{

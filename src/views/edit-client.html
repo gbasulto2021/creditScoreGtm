@@ -2,51 +2,48 @@
 <body>
   <%- include ('./partials/navigation.html')%>
 
-    <div class="form__title">
-        <span class="material-icons">
-            person_outline
-            </span>
-        <h2>Editar Cliente</h2>
-        
-    </div>
+    
     <div class="form-container">
         <form action="/update/<%=data.id%>" method="POST" class="form" id="form">
-            <div class="form__item">
+            <div class="form__item nombre">
                   <label for="nombre">Nombre</label>
                   <input
                     type="text"
                     name="nombre"
                     id="nombre"
                     value="<%=data.nombre%>"
+                    required
                     
                   />
-            <p class="form__input-error">* Campo inv&aacutelido</p>
+            <p class="form__input-error"></p>
               </div>
-              <div class="form__item">
+              <div class="form__item apellidos">
                 <label for="apellidos">Apellido</label>
                 <input
                   type="text"
                   name="apellidos"
-                  id="apellido"
+                  id="apellidos"
                   value="<%=data.apellidos%>"
+                  required
                   
                 />
           <p class="form__input-error">* Campo inv&aacutelido</p>
             </div>
-            <div class="form__item">
+            <div class="form__item ci">
                 <label for="ci">Carn&eacutet de Identidad</label>
                 <input
                     type="text"
                     name="ci"
                     id="ci"
                     value="<%=data.ci%>"
+                    required
                   />
                 
                 <p class="form__input-error">* Campo inv&aacutelido</p>
               </div>
-              <div class="form__item">
+              <div class="form__item ul">
                 <label>Ubicaci&oacuten Laboral</label>
-                <div class="ul">
+                <div class="ulab">
                
                   <input type="radio" name="ul" id="ul-centro" value="centro" <% if(data.ul == "centro"){%>
                     checked
@@ -61,7 +58,7 @@
                   * Debe seleccionar una ubicaci&oacuten laboral
                 </p>
               </div>
-              <div class="form__item">
+              <div class="form__item experiencia">
                 <label for="experiencia">Años de Experiencia</label>
                  <input
                     type="number"
@@ -71,12 +68,13 @@
                     value="<%=data.experiencia%>"
                     min="0"
                     max="70"
+                    required
                     
                   />
                 
                 <p class="form__input-error">* Campo inv&aacutelido</p>
               </div>
-              <div class="form__item">
+              <div class="form__item capago">
                 
                 <label for="capago">Capacidad de Pago</label>
                   <input
@@ -86,11 +84,12 @@
                     value="<%=data.capago%>"
                     step="any"
                     min="0"
+                    required
                   />
                
                 <p class="form__input-error">* Campo inv&aacutelido</p>
               </div>
-              <div class="form__item">
+              <div class="form__item resFamiliar">
                 <label for="resfamiliar">Responsabilidad Familiar</label>
                 <input
                     type="number"
@@ -105,7 +104,7 @@
                   * Campo inv&aacutelido
                 </p>
               </div>
-              <div class="form__item">
+              <div class="form__item otrosIngresos">
                 <label for="otrosIngresos">Otros Ingresos</label>
                 <input
                     type="number"
@@ -117,14 +116,15 @@
                   />
                 <p class="form__input-error">* Campo inv&aacutelido</p>
               </div>
-              <div class="form__item">
+              <div class="form__item escolaridad">
                 <label>Escolaridad</label>
-                <div class="escolaridad">
+                <div class="escol">
                   <input
                     type="radio"
                     name="escolaridad"
                     id="nivel-superior"
                     value="superior"
+                    required
                     <% if(data.escolaridad == "superior"){%>
                       checked
                    <%}%>
@@ -137,6 +137,7 @@
                     name="escolaridad"
                     id="no-nivel-superior"
                     value="no-nivel-superior"
+                    required
                     <% if(data.escolaridad == "no-nivel-superior"){%>
                       checked
                    <%}%>
@@ -147,7 +148,7 @@
                   * Debe seleccionar nivel de escolaridad
                 </p>
               </div>
-              <div class="form__item">
+              <div class="form__item tasa">
                 <label>Tasa</label>
                 
                   <input
@@ -158,13 +159,14 @@
                     step="any"
                     min="4.25"
                     max="35"
+                    required
                   />
                
                 <p class="form__input-error">* Campo inv&aacutelido</p>
               </div>
-              <div class="form__item">
+              <div class="form__item garantia">
                 <label>Garant&iacutea</label>
-                <div class="garantia">
+                <div class="garant">
                   <input type="radio" name="garantia" id="garantia-real" value="garantia-real" <% if(data.garantia == "garantia-real"){%>
                     checked
                  <%}%> />
@@ -179,6 +181,7 @@
                   * Debe seleccionar una garant&iacutea
                 </p>
               </div>
+              <input type="hidden" id="isValid" name="isValid" value="">
               <input type="submit" class="btn-send" value="Actualizar"></input>
         </form>
         
@@ -186,6 +189,8 @@
     <%- include ('./partials/footer.html')%>
 
     <script src="/js/navigation.js"></script>
+    <script src="/js/form-client.js"></script>
+    
     <% if(typeof alert != "undefined"){%>
       <script>
         

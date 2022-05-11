@@ -77,17 +77,57 @@ clientsController.addClient = (req,res)=>{
 }
 
 clientsController.getOneClient = (req, res)=>{
-  // console.log(req.url);
+
   const {id} = req.params
   let sql = "SELECT * FROM usuario WHERE id= ?";
        connection.query(sql,[id],(error, result) => {
             if (error) throw error;
           // console.log(result[0]);
+          req.session.client = result[0]
           res.render("edit-client.html", {
             login: true,
             name: req.session.name,
             rol: req.session.rol,
             data:result[0]
+          });
+                    
+          }
+        )
+}
+
+clientsController.viewOneClient = (req, res)=>{
+
+  const {id} = req.params
+  let sql = "SELECT * FROM usuario WHERE id= ?";
+       connection.query(sql,[id],(error, result) => {
+            if (error) throw error;
+          // console.log(result[0]);
+          req.session.client = result[0]
+          res.render("client.html", {
+            login: true,
+            name: req.session.name,
+            rol: req.session.rol,
+            data:result[0]
+          });
+                    
+          }
+        )
+}
+
+clientsController.filterOneClient = (req, res)=>{
+
+  const {search} = req.body
+
+
+  let sql = "SELECT * FROM usuario WHERE ci= ?";
+       connection.query(sql,[search],(error, result) => {
+            if (error) throw error;
+         
+          res.render("list-clients.html", {
+            login: true,
+            name: req.session.name,
+            rol: req.session.rol,
+            clients:result
           });
                     
           }
@@ -150,8 +190,6 @@ clientsController.updateClient = (req,res)=>{
 }
 
 clientsController.deleteClient = (req,res)=>{
-
-
   const {id} = req.params;
 
 let sql = "DELETE FROM usuario WHERE id= ?"

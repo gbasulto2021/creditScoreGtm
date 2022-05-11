@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 
 require('dotenv').config({
-  path:'./env/.env'
+  path:'./src/env/.env'
 }) //Variables de entorno
 
 const connection = mysql.createConnection({

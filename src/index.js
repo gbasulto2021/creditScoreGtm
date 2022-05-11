@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 
 //Variables de entorno
 require('dotenv').config({
-    path:'./env/.env'
+    path:'./src/env/.env'
 }) 
 
 

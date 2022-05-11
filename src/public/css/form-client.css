@@ -1,17 +1,3 @@
-.form__title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    padding: 5px;
-    border-radius: 5px 0;
-    text-align: center;
-    background-color: var(--secondary-color);
-    color: var(--third-color);
-    font-size: 12px;
-    
-}
-
 .form-container{
     width: 90%;
     padding-top: 20px;

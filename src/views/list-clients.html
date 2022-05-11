@@ -1,22 +1,19 @@
 <%- include ('./partials/head.html') %>
 <body>
     <%- include ('./partials/navigation.html') %>
-    <div class="reports__title">
-        <h5 class="material-icons">
-            list_alt
-            </h5>
-        <h3>Reportes</h3>
-    </div>
+   
     <main class="reports__container">
-        <section class="reports__search">
-            <input type="search" placeholder="  Encuentra clientes" name="search" id="search" class="search">
-            <button class="btn-search"><h5 class="material-icons">
+        <form class="reports__search" action="/search" method="POST">
+            <input type="search" placeholder="Carnet de Identidad" name="search" id="search" class="search">
+            <button class="btn-search"><span class="material-icons">
                 search
-                </h5>
-            </button>
-        </section>
+            </span>
+        </button>
+    </form>
+    <p class="search__input-error">Debe ser un numero de 11 digitos</p>
         <section class="reports__items">
-           <% if (clients) { %>
+         
+           <% if (clients && clients.length !== 0) { %>
                   <% clients.forEach(client=> { %>
                       <%- include('./partials/client-card.html', {client}) %>
                   <% }) %>
@@ -29,7 +26,22 @@
     
     <%- include ('./partials/footer.html') %>
     <script src="/js/navigation.js"></script>
+    <script src="js/list-clients.js"></script>
 
+    <% if(typeof alert != "undefined"){%>
+        <script>
+          
+          Swal.fire({
+              title:'<%=alertTitle%>',
+              text:'<%=alertMessage%>',
+              icon:'<%=alertIcon%>',
+              showConfirmButton: <%=showConfirmButton%>,
+              timer: <%=timer%>,
+          }).then(()=>{
+              window.location = '/<%=ruta%>'
+          })
+        </script>
+        <% } %>
   
 </body>
 </html>

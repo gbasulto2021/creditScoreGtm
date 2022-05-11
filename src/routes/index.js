@@ -7,6 +7,9 @@ const clientsController = require("../controllers/clientsControllers.js");
 const opAuth = require("../middlewares/opAuth.js");
 const adminAuth = require("../middlewares/adminAuth.js");
 const formClientValidator = require("../middlewares/form-client-validator.js");
+const searchValidator = require("../middlewares/searchValidator.js");
+const editClientValidator = require("../middlewares/edit-client-validator.js");
+
 
 
 routes.get("/login", (req, res) => {
@@ -123,7 +126,7 @@ routes.get("/", (req, res) => {
   } else {
     res.render("dashboard.html", {
       login: false,
-      name: "Debe iniciar sesion",
+      name: "",
       rol: req.session.rol,
     });
   }
@@ -141,25 +144,26 @@ routes.get("/add", opAuth, (req, res) => {
 routes.post("/add", opAuth,formClientValidator,calc, clientsController.addClient);
 
 
-routes.get("/clients",opAuth, clientsController.getClients);
+routes.get("/clients", opAuth,clientsController.getClients);
+
+routes.post("/search", searchValidator, clientsController.filterOneClient)
 
 routes.get("/update/:id",opAuth, clientsController.getOneClient);
 
-routes.post("/update/:id", opAuth, formClientValidator,calc, clientsController.updateClient);
+routes.post("/update/:id", opAuth, editClientValidator,calc, clientsController.updateClient);
 
 routes.get("/delete/:id", opAuth,clientsController.deleteClient);
 
-routes.get("/help", (req, res) => {
-  if (req.session.loggedin) {
+routes.get("/client/:id", opAuth, clientsController.viewOneClient)
+
+routes.get("/help", opAuth, (req, res) => {
+  
     res.render("help.html", {
       login: true,
       name: req.session.name,
       rol: req.session.rol,
     });
-  } else {
-    // console.log(req.rutaAnterior);
-    res.redirect("/login");
-  }
+ 
 });
 
 //logout
