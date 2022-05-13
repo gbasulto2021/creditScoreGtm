@@ -150,9 +150,13 @@
 
   $form.addEventListener("submit", (e)=>{
     //  e.preventDefault();
-     validateInputRadio()
-    if (fields.nombre &&  fields.apellidos && fields.ci && fields.ul && fields.experiencia && fields.capago && fields.resFamiliar && fields.otrosIngresos && fields.escolaridad && fields.tasa && fields.garantia) {
-      $isValid.value = "Valid"
+    validateInputRadio()
+
+    const formData = new FormData(e.target);
+    const fields = Object.fromEntries(formData);
+
+    if (fields.nombre &&  fields.apellidos && fields.ci && fields.ul && fields.experiencia && fields.capago && fields.resfamiliar && fields.otrosIngresos && fields.escolaridad && fields.tasa && fields.garantia) {
+       $isValid.value = "Valid"
     }else{
       $isValid.value = ""
     }
@@ -161,3 +165,4 @@
 
 
 
+  
