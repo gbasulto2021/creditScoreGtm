@@ -85,6 +85,8 @@
     }
   }
 
+  
+
   const validateInput = (exp,inputValue,fieldName)=>{
    let regex = new RegExp(exp);
    if(!regex.exec(inputValue) || inputValue == ""){
@@ -149,13 +151,29 @@
   })
 
   $form.addEventListener("submit", (e)=>{
-    //  e.preventDefault();
-     validateInputRadio()
+    // e.preventDefault();
+    validateInputRadio()
+     const formData = new FormData(e.target);
+     const camps = Object.fromEntries(formData);
+     validateInput(expresiones.nombre, camps.nombre, "nombre");
+     validateInput(expresiones.apellidos, camps.apellidos, "apellidos");
+     validateInput(expresiones.ci, camps.ci, "ci");
+     validateInput(expresiones.experiencia, camps.experiencia, "experiencia");
+     validateInput(expresiones.capago, camps.capago, "capago");
+     validateInput(expresiones.resFamiliar, camps.resfamiliar, "resFamiliar");
+     validateInput(expresiones.tasa, camps.tasa, "tasa");
+     validateInput(expresiones.otrosIngresos, camps.otrosIngresos, "otrosIngresos");
+
     if (fields.nombre &&  fields.apellidos && fields.ci && fields.ul && fields.experiencia && fields.capago && fields.resFamiliar && fields.otrosIngresos && fields.escolaridad && fields.tasa && fields.garantia) {
-      $isValid.value = "Valid"
+      $isValid.value= "Valid"
+      
     }else{
       $isValid.value = ""
+     
+
     }
+
+    
        
   })
 

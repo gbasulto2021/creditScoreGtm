@@ -1,4 +1,5 @@
 const editClientValidator = (req,res,next)=>{
+    
     const {isValid} = req.body
     const {id} = req.params
      

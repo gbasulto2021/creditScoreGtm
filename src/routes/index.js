@@ -148,11 +148,11 @@ routes.get("/clients", opAuth,clientsController.getClients);
 
 routes.post("/search", searchValidator, clientsController.filterOneClient)
 
-routes.get("/update/:id",opAuth, clientsController.getOneClient);
+routes.get("/update/:id", opAuth, clientsController.getOneClient);
 
 routes.post("/update/:id", opAuth, editClientValidator,calc, clientsController.updateClient);
 
-routes.get("/delete/:id", opAuth,clientsController.deleteClient);
+routes.get("/delete/:id", opAuth, clientsController.deleteClient);
 
 routes.get("/client/:id", opAuth, clientsController.viewOneClient)
 
