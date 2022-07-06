@@ -3,11 +3,46 @@
     <%- include ('./partials/navigation.html') %>
    
     <section class="client__container">
-        <article class="client-img">
-            
-        </article>
-       <article class="client__info">
-       <h3><%=data.nombre%> <%=data.apellidos%></h3>
+      <article class="client__info">
+          <div class="client__name">
+           <h3><%=data.nombre%> <%=data.apellidos%></h3>
+           <h5>CI: <%=data.ci%></h5>
+
+          </div>
+          <div class="client__data">
+            <div class="client__data_info">
+                <div class="info-group-1">
+                   <div class="info-group-1-1">
+                       <h5>Ubicacion laboral :</h5>
+                       <h5>Años de experiencia :</h5>
+                       <h5>Capacidad de pago :</h5>
+                       <h5>Responsabilidad familiar :</h5>
+                    </div>
+                   <div class="info-group-1-2">
+                       <h5><%=data.ul%></h5>
+                       <h5><%=data.experiencia%> años</h5>
+                       <h5><%=data.capago%></h5>
+                       <h5><%=data.resfamiliar%></h5>
+                </div>
+                </div>
+                
+                <div class="info-group-2">
+                    <div class="info-group-2-1">
+                        <h5>Otros ingresos :</h5>
+                       <h5>Escolaridad :</h5>
+                       <h5>Tasa :</h5>
+                       <h5>Garant&iacutea :</h5>
+                     </div>
+                    <div class="info-group-2-2">
+                        <h5>$<%=data.otrosIngresos%>.00</h5>
+                        <h5><%=data.escolaridad%></h5>
+                        <h5><%=data.tasa%></h5>
+                        <h5><%=data.garantia%></h5>
+                 </div>
+                </div>
+            </div>
+            <h5 class="client__data-result">Resultado: <%=data.total%></h5>
+            </div>
        </article>
 
     </section>

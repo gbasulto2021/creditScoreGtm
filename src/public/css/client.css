@@ -1,14 +1,106 @@
 .client__container{
+    margin: 20px auto;
     width: 400px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: 50px auto 50px auto;
+    height:600px;
+    /* border: 1px solid var(--four-color); */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 3px var(--four-color); */
+    overflow: hidden;
+    background-color: rgba(5, 71, 25, 0.283);
+    background-image: url("../img/user-info3.png");
+    background-size:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode:soft-light;
+}
+
+.client__info{
+    width: 100%;
+    height: 100%;
+    
+    position: relative;
+    
+}
+
+.client__name{
+    width: 100%;
+    height: 30%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    border: 1px solid var(--four-color);
-    border-radius: 10px;
-    box-shadow: 0 0 3px var(--four-color);
-    background-color: var(--third-color);
+    justify-content:top;
+    align-items: flex-end;
+    padding-top: 10px;
+    padding-right: 10px;
+    color: rgba(1, 36, 9, 0.724);
+    
+    
+}
+
+.client__name h3{
+ font-size: 1.2rem;
+ font-weight:bold;
+ text-transform:uppercase;
+}
+
+.client__data{
+    width: 100%;
+    height: 70%;
+    color:var(--four-color);
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    padding: 10px;
+}
+
+
+.client__data h5{
+    padding-bottom: 10px;
+ 
+}
+
+.client__data-result{
+    text-align: center;
+    color: var(--third-color);
+}
+
+.client__data_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.1rem;
+}
+
+.info-group-1, .info-group-2{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-group-1-1, .info-group-1-2, .info-group-2-1, .info-group-2-2{
+    width: 50%;
+    margin-right: 10px;
+}
+
+
+
+.info-group-1-2 h5, .info-group-2-2 h5{
+    text-transform: uppercase;
+}
+
+@media screen and (min-width:480px) {
+    .client__container{
+        width: 530px;
+        height:440px;
+        background-size:contain;
+        background-position:top;
+    
+    
+}
+
+
+
 }
